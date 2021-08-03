@@ -1,4 +1,4 @@
-[![GoDoc](https://godoc.org/github.com/uudashr/structfield?status.svg)](https://godoc.org/github.com/structfield)
+[![GoDoc](https://godoc.org/github.com/uudashr/structfield?status.svg)](https://godoc.org/github.com/uudashr/structfield)
 # Structfield
 Find struct literals using non-labeled fields.
 
