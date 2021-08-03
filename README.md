@@ -38,6 +38,12 @@ The limit set to 2 (default value), which considered easy to understand and reme
 
 ## Installation
 ```
+$ go install github.com/uudashr/structfield/cmd/structfield@latest
+```
+
+or
+
+```
 $ go get github.com/uudashr/structfield/cmd/structfield
 ```
 
