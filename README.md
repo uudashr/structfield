@@ -15,7 +15,7 @@ acc := Account{
         Permission{"account", "read"},
         Permission{"account", "write"},
     },
-    false,
+    true,
     false,
 }
 ```
@@ -31,12 +31,12 @@ acc := Account{
         Permission{"account", "read"}, // Non-labeled here is still ok
         Permission{"account", "write"},
     },
-    Verified: false,
-    Deactivated: false,
+    Verified: true,
+    // We can leave the `Deactivated` since `false` is default value
 }
 ```
 
-The limit set to 2 (default value), which considered easy to understand and remember.
+The limit set to 2, which considered easy to understand and remember.
 
 ## Benefits
 By using the labeled fields you several benefits
