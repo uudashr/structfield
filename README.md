@@ -68,6 +68,7 @@ acc := Account{
         Permission{"account", "write"},
     },
     Verified: true,
+    // Remove the `Deactivated: false` since it use default value
 }
 ```
 
