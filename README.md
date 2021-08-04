@@ -9,32 +9,67 @@ The structfield analysis reports the usage of struct literal using non-labeled f
 Given code, variable assigned using struct literal:
 ```go
 acc := Account{
-    Name: "John Smith",
-    Email: "john.smith@example.com",
+    "John Smith",
+    "john.smith@example.com",
     []Permission{
         Permission{"account", "read"},
         Permission{"account", "write"},
     },
     false,
+    false,
 }
 ```
 
-Above code is harder to remember the field name without looking the `Account` type declaration.
+Above code is harder to understand, hard to guess the field name since we have to remember exact order of the fields. The workaround is you have to always look the declaration of the `Account` type.
 
 Suggestion is to refactor the code to:
 ```go
 acc := Account{
     Name: "John Smith",
     Email: "john.smith@example.com",
-    []Permission{
+    Permission: []Permission{
         Permission{"account", "read"}, // Non-labeled here is still ok
         Permission{"account", "write"},
     },
+    Verified: false,
     Deactivated: false,
 }
 ```
 
 The limit set to 2 (default value), which considered easy to understand and remember.
+
+## Benefits
+By using the labeled fields you several benefits
+
+1. The fields doesn't have to be in order
+2. You don't have to declare the value if it's a default value
+
+Example:
+```go
+acc := Account{
+    Name: "John Smith",
+    Email: "john.smith@example.com",
+    Permission: []Permission{
+        Permission{"account", "read"}, // Non-labeled here is still ok
+        Permission{"account", "write"},
+    },
+    Verified: true,
+    Deactivated: false,
+}
+```
+
+can be simplified into:
+```go
+acc := Account{
+    Name: "John Smith",
+    Email: "john.smith@example.com",
+    Permission: []Permission{
+        Permission{"account", "read"}, // Non-labeled here is still ok
+        Permission{"account", "write"},
+    },
+    Verified: true,
+}
+```
 
 ## Installation
 ```
