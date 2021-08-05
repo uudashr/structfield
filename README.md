@@ -9,8 +9,8 @@ The structfield analysis reports the usage of struct literal using non-labeled f
 Given code, variable assigned using struct literal:
 ```go
 acc := Account{
-    "John Smith",
     "john.smith@example.com",
+    "John Smith",
     []Permission{
         Permission{"account", "read"},
         Permission{"account", "write"},
@@ -25,14 +25,14 @@ Above code is harder to understand, hard to guess the field name since we have t
 Suggestion is to refactor the code to:
 ```go
 acc := Account{
-    Name: "John Smith",
     Email: "john.smith@example.com",
+    Name: "John Smith",
     Permission: []Permission{
         Permission{"account", "read"}, // Non-labeled here is still ok
         Permission{"account", "write"},
     },
     Verified: true,
-    // We can leave the `Deactivated` since `false` is default value
+    Deactivated: false,
 }
 ```
 
@@ -47,8 +47,8 @@ By using the labeled fields you several benefits
 Example:
 ```go
 acc := Account{
-    Name: "John Smith",
     Email: "john.smith@example.com",
+    Name: "John Smith",
     Permission: []Permission{
         Permission{"account", "read"}, // Non-labeled here is still ok
         Permission{"account", "write"},
@@ -61,7 +61,7 @@ acc := Account{
 can be simplified into:
 ```go
 acc := Account{
-    Name: "John Smith",
+    Name: "John Smith", // `Name` come first
     Email: "john.smith@example.com",
     Permission: []Permission{
         Permission{"account", "read"}, // Non-labeled here is still ok
