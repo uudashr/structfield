@@ -26,7 +26,7 @@ var (
 )
 
 func init() {
-	Analyzer.Flags.IntVar(&limit, "limit", 2, "Limit of non-labeled fields found on struct literal")
+	Analyzer.Flags.IntVar(&limit, "limit", 2, "Limit of non-labeled fields allowed on struct literal")
 }
 
 func run(pass *analysis.Pass) (interface{}, error) {
